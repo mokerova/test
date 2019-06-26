@@ -17,10 +17,15 @@ script:
   - ./tests/tests
 
 after_success:
-  - coveralls --root . -E ".*external.*" -E ".*tests.*"
-  - build-wrapper-linux-x86-64 --out-dir bw-output make clean all
-  - sonar-scanner Dsonar.projectKey=mokerova_test   Dsonar.organization=mokerova-github   Dsonar.sources=.   Dsonar.cfamily.build-wrapper-output=bw-output Dsonar.host.url=https://sonarcloud.io  Dsonar.login=fd4a764bb148a0810c990b4ddf4cb4799eb5c280
-
+  - coveralls --root . -E ".*external.*" -E ".*tests.*" \
+  - build-wrapper-linux-x86-64 --out-dir bw-output make clean all \
+  - sonar-scanner \
+  -Dsonar.projectKey=mokerova_test \
+  -Dsonar.organization=mokerova-github \
+  -Dsonar.sources=. \
+  -Dsonar.cfamily.build-wrapper-output=bw-output \
+  -Dsonar.host.url=https://sonarcloud.io \
+  -Dsonar.login=fd4a764bb148a0810c990b4ddf4cb4799eb5c280
 cache:
   directories:
 - '$HOME/.sonar/cache'
