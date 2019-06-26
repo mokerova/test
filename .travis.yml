@@ -4,11 +4,7 @@ language:
 before_install:
   - pip install --user cpp-coveralls
   
-addons:
-  sonarcloud:
-    organization: "mokerova-github"
-    token:
-secure: $SONAR_TOKEN
+
 
 script:
   - qmake
